@@ -68,7 +68,7 @@ h3 {
   font-size: 2rem;
 }
 
-button {
+.button {
   padding: 1rem 2rem;
   border-radius: 5px;
   border: none;
@@ -78,8 +78,49 @@ button {
   color: antiquewhite;
 }
 
-button:hover {
+.button:hover {
   background-color: var(--middlegreen);
+}
+
+footer {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.wrapper-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-buttons {
+  position: fixed;
+  background-color: var(--darkgreen);
+  opacity: 0.5;
+  padding: 1rem;
+  font-weight: 700;
+  color: antiquewhite;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
+.footer-buttons:first-of-type {
+  top: 2rem;
+  left: 4rem;
+}
+
+.footer-buttons:last-of-type {
+  top: 2rem;
+  right: 4rem;
+}
+
+.footer-buttons:hover {
+  opacity: 1;
 }
 
 @media screen and (max-width: 821px) {
@@ -99,5 +140,31 @@ button:hover {
 
   h3 {
     font-size: 1.7rem;
+  }
+
+  footer {
+    position: relative;
+    background-color: var(--lightgreen);
+  }
+
+  .wrapper-buttons {
+    position: fixed;
+    bottom: 0;
+  }
+
+  .footer-buttons {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1rem;
+  }
+
+  .footer-buttons:first-of-type {
+    position: static;
+    margin-left: 1rem;
+  }
+
+  .footer-buttons:last-of-type {
+    position: static;
+    margin-right: 1rem;
   }
 }
