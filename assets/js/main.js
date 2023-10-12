@@ -1,11 +1,10 @@
-const url = "https://picsum.photos/v2/list?page=3&limit=21";
+const url = "https://picsum.photos/v2/list?page=2&limit=21";
 
 const gallery = document.querySelector('[data-js="gallery"]');
 
 fetch(url)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     const pictures = data;
     pictures.forEach((pic) => {
       // Create the Card for each pic and add class (styles)
@@ -22,6 +21,7 @@ fetch(url)
       picture.height = pic.height;
       picture.alt = `${pic.author} Picture`;
       picture.classList.add("images");
+      seeMoreButton.classList.add("button");
       seeMoreButton.textContent = "See More";
 
       //Create the dom structure of the card, add all elements to PictureCard and this one to gallery:
@@ -29,7 +29,6 @@ fetch(url)
       gallery.append(pictureCard);
 
       //EventListener for the seeMoreButton
-
       seeMoreButton.addEventListener("click", () => {
         window.open(pic.url, "_blank");
       });
@@ -38,3 +37,5 @@ fetch(url)
   .catch((error) => {
     console.error("Error Message", error);
   });
+
+//   Add pagination
