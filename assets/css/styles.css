@@ -6,13 +6,21 @@
   padding: 0;
 }
 
+:root {
+  --extradark: rgb(39, 54, 39);
+  --darkgreen: rgb(50, 98, 59);
+  --middlegreen: rgb(13, 129, 13);
+  --lightgreen: rgb(206, 215, 201);
+}
+
 html {
   font-size: 62.5%;
   font-family: Helvetica, Arial, "Lucida Sans";
+  color: var(--extradark);
 }
 
 .wrapper {
-  background-color: rgb(206, 215, 201);
+  background-color: var(--lightgreen);
   height: 100%;
   width: 100%;
 }
@@ -66,8 +74,12 @@ button {
   border: none;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
-  background-color: darkgreen;
+  background-color: var(--darkgreen);
   color: antiquewhite;
+}
+
+button:hover {
+  background-color: var(--middlegreen);
 }
 
 @media screen and (max-width: 821px) {
