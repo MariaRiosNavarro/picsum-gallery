@@ -8,7 +8,7 @@ fetch(url)
     console.log(data);
     const pictures = data;
     pictures.forEach((pic) => {
-      // Create the Card for euch pic and add class (styles)
+      // Create the Card for each pic and add class (styles)
       let pictureCard = document.createElement("article");
       pictureCard.classList.add("picture-card");
       let picture = document.createElement("img");
@@ -28,7 +28,11 @@ fetch(url)
       pictureCard.append(picture, artistName, seeMoreButton);
       gallery.append(pictureCard);
 
-      //
+      //EventListener for the seeMoreButton
+
+      seeMoreButton.addEventListener("click", () => {
+        window.open(pic.url, "_blank");
+      });
     });
   })
   .catch((error) => {
