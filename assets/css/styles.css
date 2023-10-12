@@ -5,3 +5,87 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  font-size: 62.5%;
+  font-family: Helvetica, Arial, "Lucida Sans";
+}
+
+.wrapper {
+  background-color: rgb(206, 215, 201);
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 1rem;
+  padding-top: 1rem;
+}
+
+.images {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.picture-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: none;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  background-color: darkgreen;
+  color: antiquewhite;
+}
+
+@media screen and (max-width: 821px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+  }
+}
