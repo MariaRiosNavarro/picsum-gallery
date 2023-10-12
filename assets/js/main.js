@@ -1,18 +1,18 @@
-// Add a first & last page
+// ! 1--------PAGINATION: Add a first & last page
+
 let page = 1;
 let maxPage = 47;
 
-// add buttons for pagination
+// ! 2--------PAGINATION: Add pagination Buttons
 
 const prev = document.querySelector('[data-js="prev"]');
 const next = document.querySelector('[data-js="next"]');
 
-// for pagination add  ${page}, so we can change it
-
-// const url = ;
+// ! 3--------Add Gallery Container
 const gallery = document.querySelector('[data-js="gallery"]');
 
-// Event-Listener prev
+// ! 4--------PAGINATION: Add Event Listeners for prev & mext
+
 prev.addEventListener("click", () => {
   if (page > 1) {
     page--;
@@ -20,7 +20,6 @@ prev.addEventListener("click", () => {
   }
 });
 
-// Event-Listener next
 next.addEventListener("click", () => {
   if (page < maxPage) {
     page++;
@@ -28,27 +27,40 @@ next.addEventListener("click", () => {
   }
 });
 
-// fetch (Save fetch in one function, to call it in the prev und back eventListeners)
+//# FOR the Pagination: Normally I would have
+//# the address (url) stored in a variable if I render only
+//# once, but for pagination we need it inside the
+//# function (to change the page number).
+//#  So that when we call it in the
+//#  event listener (prev/back)
+//# it works, outside it does not work (scope).
+
+// let url = `https://picsum.photos/v2/list?page=${page}&limit=21`;
+
+// ! 5-------- fetch (Save fetch in one function,
+// ! with the parameter of the page that we change with the prev/next buttons
+// ! to call it in the prev und back eventListeners)
 
 function fetchAndRender(page) {
   fetch(`https://picsum.photos/v2/list?page=${page}&limit=21`)
     .then((response) => response.json())
     .then((data) => {
-      // remove the old render to add the new page
+      // !  5A-----------IMPORTANT for Pagination:
+      // ! remove the old render/page to add the new page
       gallery.innerHTML = "";
       const pictures = data;
 
-      // Create Gallery
+      // !  5B-----------Create Gallery
 
       pictures.forEach((pic) => {
-        // Create the Card for each pic and add class (styles)
+        // !  5C-----------Create the Card for each pic and add class (styles)
         let pictureCard = document.createElement("article");
         pictureCard.classList.add("picture-card");
         let picture = document.createElement("img");
         let artistName = document.createElement("h3");
         let seeMoreButton = document.createElement("button");
 
-        // Give the data to the created elements
+        // !  5D-----------Give the data to the created elements
         artistName.textContent = pic.author;
         picture.src = pic.download_url;
         picture.width = pic.width;
@@ -58,11 +70,12 @@ function fetchAndRender(page) {
         seeMoreButton.classList.add("button");
         seeMoreButton.textContent = "See More";
 
-        //Create the dom structure of the card, add all elements to PictureCard and this one to gallery:
+        // !  5E-----------Create the dom structure of the card,
+        // !  add all elements to PictureCard and this one to gallery:
         pictureCard.append(picture, artistName, seeMoreButton);
         gallery.append(pictureCard);
 
-        //EventListener for the seeMoreButton
+        // !  5F-----------EventListener for the seeMoreButton
         seeMoreButton.addEventListener("click", () => {
           window.open(pic.url, "_blank");
         });
@@ -73,6 +86,6 @@ function fetchAndRender(page) {
     });
 }
 
-// initialisation of the first page
+// !  6----------- initialisation of the first page
 
 fetchAndRender(page);
