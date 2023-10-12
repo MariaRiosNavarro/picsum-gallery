@@ -52,12 +52,12 @@ function fetchAndRender(page) {
       gallery.innerHTML = "";
 
       if (page === 1) {
-        prev.style.display = "none";
+        prev.style.visibility = "hidden";
       } else if (page === 47) {
-        next.style.display = "none";
+        next.style.visibility = "hidden";
       } else {
-        prev.style.display = "block";
-        next.style.display = "block";
+        prev.style.visibility = "visible";
+        next.style.visibility = "visible";
       }
 
       // !  5B-----------Create Gallery

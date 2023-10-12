@@ -82,6 +82,11 @@ h3 {
   background-color: var(--middlegreen);
 }
 
+footer {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
 .wrapper-buttons {
   display: flex;
   align-items: center;
@@ -91,7 +96,6 @@ h3 {
 
 .footer-buttons {
   position: fixed;
-
   background-color: var(--darkgreen);
   opacity: 0.5;
   padding: 1rem;
@@ -101,8 +105,8 @@ h3 {
   height: 6rem;
   border-radius: 50%;
   text-align: center;
-  line-height: 40px;
   cursor: pointer;
+  border: none;
 }
 
 .footer-buttons:first-of-type {
@@ -136,5 +140,31 @@ h3 {
 
   h3 {
     font-size: 1.7rem;
+  }
+
+  footer {
+    position: relative;
+    background-color: var(--lightgreen);
+  }
+
+  .wrapper-buttons {
+    position: fixed;
+    bottom: 0;
+  }
+
+  .footer-buttons {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1rem;
+  }
+
+  .footer-buttons:first-of-type {
+    position: static;
+    margin-left: 1rem;
+  }
+
+  .footer-buttons:last-of-type {
+    position: static;
+    margin-right: 1rem;
   }
 }
