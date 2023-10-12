@@ -31,27 +31,37 @@ next.addEventListener("click", () => {
 //# the address (url) stored in a variable if I render only
 //# once, but for pagination we need it inside the
 //# function (to change the page number).
-//#  So that when we call it in the
-//#  event listener (prev/back)
+//# So that when we call it in the
+//# event listener (prev/back)
 //# it works, outside it does not work (scope).
 
 // let url = `https://picsum.photos/v2/list?page=${page}&limit=21`;
 
 // ! 5-------- fetch (Save fetch in one function,
-// ! with the parameter of the page that we change with the prev/next buttons
-// ! to call it in the prev und back eventListeners)
+// !        with the parameter of the page that we change with the prev/next buttons
+// !        to call it in the prev und back eventListeners)
 
 function fetchAndRender(page) {
   fetch(`https://picsum.photos/v2/list?page=${page}&limit=21`)
     .then((response) => response.json())
     .then((data) => {
       // !  5A-----------IMPORTANT for Pagination:
-      // ! remove the old render/page to add the new page
+      // !    remove the old render/page to add the new page
+      // !    AND handle the visibility of the prev/next
+      // !    buttons in der first und last page
       gallery.innerHTML = "";
-      const pictures = data;
+
+      if (page === 1) {
+        prev.style.display = "none";
+      } else if (page === 47) {
+        next.style.display = "none";
+      } else {
+        prev.style.display = "block";
+        next.style.display = "block";
+      }
 
       // !  5B-----------Create Gallery
-
+      const pictures = data;
       pictures.forEach((pic) => {
         // !  5C-----------Create the Card for each pic and add class (styles)
         let pictureCard = document.createElement("article");
